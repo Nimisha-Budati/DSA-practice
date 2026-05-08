@@ -1,4 +1,5 @@
-//Added insertion in a singly linked list
+//Added delection from a singly linked list
+//insertion in a singly linked list
 //creation aand traversal of a singly linked list
 #include<stdio.h>
 #include<stdlib.h>
@@ -117,6 +118,75 @@ void insertion_at_position(){
     printf("Node inserted successfully at position %d\n",pos);
     return;
 }
+void deletion_from_beginning(){
+    struct node *temp;
+    if(head==NULL){
+        printf("Linked List is empty\n");
+        return;
+    }
+    temp=head;
+    head=head->next;
+    free(temp);
+    printf("Node deleted successfully from beginning\n");
+    count--;
+    return;
+}
+void deletion_from_end(){
+    struct node *temp,*prev;
+    if(head==NULL){
+        printf("Linked List is empty\n");
+        return;
+    }
+    if(head->next==NULL){
+        free(head);
+        head=NULL;
+    }
+    else{
+        temp=head;
+        prev=NULL;
+        while(temp->next!=NULL){
+            prev=temp;
+            temp=temp->next;
+        }
+
+        prev->next=NULL;
+        free(temp);
+    }
+    count--;
+    printf("Node deleted successfully from end\n");
+    return;
+}
+void deletion_from_position(){
+    struct node *temp,*prev;
+    int pos,i;
+    if(head==NULL){
+        printf("Linked List is empty\n");
+        return;
+    }
+    printf("Enter position where to delete: ");
+    scanf("%d",&pos);
+    if(pos<1 || pos>count){
+        printf("Invalid position\n");
+        return;
+    }
+    if(pos==1){
+        temp=head;
+        head=head->next;
+        free(temp);
+    }
+    else{
+        temp=head;
+        for(i=1;i<pos;i++){
+            prev=temp;
+            temp=temp->next;
+        }
+        prev->next=temp->next;
+        free(temp);
+    }
+    count--;
+    printf("Node deleted successfully from position %d\n",pos);
+    return;
+}
 int main(){
     int choice;
     do{
@@ -127,6 +197,9 @@ int main(){
         printf("3.Insert at Beginning\n");
         printf("4.Insert at End\n");
         printf("5.Insert at Position\n");
+        printf("6.Delete from Beginning\n");
+        printf("7.Delete from End\n");
+        printf("8.Delete from Position\n");
         printf("Enter choice: ");
         scanf("%d",&choice);
         switch(choice){
@@ -147,6 +220,15 @@ int main(){
                 break;
             case 5:
                 insertion_at_position();
+                break;
+            case 6:
+                deletion_from_beginning();
+                break;
+            case 7:
+                deletion_from_end();
+                break;
+            case 8:
+                deletion_from_position();
                 break;
             default:
                 printf("Invalid choice\n");
