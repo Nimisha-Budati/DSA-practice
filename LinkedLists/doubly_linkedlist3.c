@@ -1,4 +1,5 @@
-//Added delection from beginning,end and from a position in a doubly linked list
+//Added length function in a doubly linked list
+//delection from beginning,end and from a position in a doubly linked list
 //insertion at beginning,end and at a position in a doubly linked list
 //creation aand traversal of a doublyy linked list
 #include<stdio.h>
