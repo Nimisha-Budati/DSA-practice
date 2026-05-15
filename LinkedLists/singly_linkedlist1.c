@@ -1,5 +1,5 @@
 //Added insertion in a singly linked list
-//creation aand traversal of a singly linked list
+//Creation aand traversal of a singly linked list
 #include<stdio.h>
 #include<stdlib.h>
 struct node{
