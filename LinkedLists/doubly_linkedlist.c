@@ -43,12 +43,16 @@ void createNode(){
     printf("Node created successfully\n");
 }
 int main(){
-    int choice;
+    int choice,n,i;
+    printf("Enter number of nodes: ");
+    scanf("%d",&n);
+    for(i=0;i<n;i++){
+        createNode();
+    }
     do{
         printf("\n===== MENU =====\n");
         printf("0.Exit\n");
         printf("1.Traversal\n");
-        printf("2.Create New Node\n");
         printf("Enter choice: ");
         scanf("%d",&choice);
         switch(choice){
@@ -57,9 +61,6 @@ int main(){
                 break;
             case 1:
                 traversal();
-                break;
-            case 2:
-                createNode();
                 break;
             default:
                 printf("Invalid choice\n");
