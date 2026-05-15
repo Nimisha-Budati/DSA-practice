@@ -1,6 +1,6 @@
-//Added delection from beginning,end and from a position in a doubly linked list
+//Added deletion from beginning,end and from a position in a doubly linked list
 //insertion at beginning,end and at a position in a doubly linked list
-//creation aand traversal of a doublyy linked list
+//creation and traversal of a doubly linked list
 #include<stdio.h>
 #include<stdlib.h>
 struct node{
@@ -42,15 +42,10 @@ void createNode(){
         temp=newnode;
     }
     count++;
-    printf("Node created successfully\n");
 }
 void insertion_at_beginning(){
     struct node *newnode;
     newnode=(struct node*)malloc(sizeof(struct node));
-    if(newnode==NULL){
-        printf("Memory allocation failed\n");
-        return;
-    }
     printf("Enter value: ");
     scanf("%d",&newnode->data);
     newnode->prev=NULL;
@@ -60,15 +55,11 @@ void insertion_at_beginning(){
     }
     head=newnode;
     count++;
-    printf("Node inserted successfully at beginning\n");
+    printf("Inserted at beginning\n");
 }
 void insertion_at_end(){
     struct node *newnode,*temp;
     newnode=(struct node*)malloc(sizeof(struct node));
-    if(newnode==NULL){
-        printf("Memory allocation failed\n");
-        return;
-    }
     printf("Enter value: ");
     scanf("%d",&newnode->data);
     newnode->prev=NULL;
@@ -76,7 +67,6 @@ void insertion_at_end(){
     if(head==NULL){
         head=newnode;
         count++;
-        printf("Node inserted successfully at end\n");
         return;
     }
     temp=head;
@@ -86,7 +76,7 @@ void insertion_at_end(){
     temp->next=newnode;
     newnode->prev=temp;
     count++;
-    printf("Node inserted successfully at end\n");
+    printf("Inserted at end\n");
 }
 void insertion_at_position(){
     struct node *newnode,*temp;
@@ -101,15 +91,7 @@ void insertion_at_position(){
         insertion_at_beginning();
         return;
     }
-    if(pos==count+1){
-        insertion_at_end();
-        return;
-    }
     newnode=(struct node*)malloc(sizeof(struct node));
-    if(newnode==NULL){
-        printf("Memory allocation failed\n");
-        return;
-    }
     printf("Enter value: ");
     scanf("%d",&newnode->data);
     temp=head;
@@ -118,10 +100,12 @@ void insertion_at_position(){
     }
     newnode->next=temp->next;
     newnode->prev=temp;
-    temp->next->prev=newnode;
+    if(temp->next!=NULL){
+        temp->next->prev=newnode;
+    }
     temp->next=newnode;
     count++;
-    printf("Node inserted successfully at position\n");
+    printf("Inserted at position %d\n",pos);
 }
 void deletion_from_beginning(){
     struct node *temp;
@@ -139,7 +123,7 @@ void deletion_from_beginning(){
     }
     free(temp);
     count--;
-    printf("Node deleted successfully from beginning\n");
+    printf("Deleted from beginning\n");
 }
 void deletion_from_end(){
     struct node *temp;
@@ -152,7 +136,6 @@ void deletion_from_end(){
         head=NULL;
         free(temp);
         count--;
-        printf("Node deleted successfully from end\n");
         return;
     }
     while(temp->next!=NULL){
@@ -161,7 +144,7 @@ void deletion_from_end(){
     temp->prev->next=NULL;
     free(temp);
     count--;
-    printf("Node deleted successfully from end\n");
+    printf("Deleted from end\n");
 }
 void deletion_from_position(){
     struct node *temp;
@@ -186,21 +169,25 @@ void deletion_from_position(){
     }
     free(temp);
     count--;
-    printf("Node deleted successfully from position\n");
+    printf("Deleted from position %d\n",pos);
 }
 int main(){
-    int choice;
+    int choice,n,i;
+    printf("Enter number of nodes: ");
+    scanf("%d",&n);
+    for(i=0;i<n;i++){
+        createNode();
+    }
     do{
         printf("\n===== MENU =====\n");
         printf("0.Exit\n");
         printf("1.Traversal\n");
-        printf("2.Create New Node\n");
-        printf("3.Insert at Beginning\n");
-        printf("4.Insert at End\n");
-        printf("5.Insert at Position\n");
-        printf("6.Delete from Beginning\n");
-        printf("7.Delete from End\n");
-        printf("8.Delete from Position\n");
+        printf("2.Insert at Beginning\n");
+        printf("3.Insert at End\n");
+        printf("4.Insert at Position\n");
+        printf("5.Delete from Beginning\n");
+        printf("6.Delete from End\n");
+        printf("7.Delete from Position\n");
         printf("Enter choice: ");
         scanf("%d",&choice);
         switch(choice){
@@ -211,24 +198,21 @@ int main(){
                 traversal();
                 break;
             case 2:
-                createNode();
-                break;
-            case 3:
                 insertion_at_beginning();
                 break;
-            case 4:
+            case 3:
                 insertion_at_end();
                 break;
-            case 5:
+            case 4:
                 insertion_at_position();
                 break;
-            case 6:
+            case 5:
                 deletion_from_beginning();
                 break;
-            case 7:
+            case 6:
                 deletion_from_end();
                 break;
-            case 8:
+            case 7:
                 deletion_from_position();
                 break;
             default:
