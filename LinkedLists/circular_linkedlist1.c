@@ -6,8 +6,8 @@ struct node{
     int data;
     struct node *next;
 };
-struct node *head=NULL,*lastnode=NULL;
-int count=0;
+struct node *head=NULL,*temp=NULL;
+int count;
 void traversal(){
     struct node *temp=head;
     if(head==NULL){
@@ -32,12 +32,12 @@ void createNode(){
     scanf("%d",&newnode->data);
     newnode->next=NULL;
     if(head==NULL){
-        head=lastnode=newnode;
-        lastnode->next=newnode;
+        head=temp=newnode;
+        temp->next=newnode;
     }
     else{
-        lastnode->next=newnode;
-        lastnode=newnode;
+        temp->next=newnode;
+        temp=newnode;
         newnode->next=head;
     }
     count++;
@@ -53,7 +53,7 @@ void insertion_at_beginning(){
     printf("Enter data: ");
     scanf("%d",&newnode->data);
     if(head==NULL){
-        head=lastnode=newnode;
+        head=newnode;
         head->next=head;
     }
     else{
@@ -78,7 +78,7 @@ void insertion_at_end(){
     printf("Enter data: ");
     scanf("%d",&newnode->data);
     if(head==NULL){
-        head=lastnode=newnode;
+        head=newnode;
         head->next=head;
     }
     else{
@@ -128,36 +128,27 @@ void insertion_at_position(){
     }
 }
 int main(){
-    int choice;
+    int choice,n,i;
+    printf("Enter number of nodes: ");
+    scanf("%d",&n);
+    for(i=0;i<n;i++){
+        createNode();
+    }
     do{
         printf("\n===== MENU =====\n");
         printf("0.Exit\n");
         printf("1.Traversal\n");
-        printf("2.Create New Node\n");
-        printf("3.Insert at Beginning\n");
-        printf("4.Insert at End\n");
-        printf("5.Insert at Position\n");
+        printf("2.Insert at Beginning\n");
+        printf("3.Insert at End\n");
+        printf("4.Insert at Position\n");
         printf("Enter choice: ");
         scanf("%d",&choice);
         switch(choice){
-            case 0:
-                printf("Exiting.....\n");
-                break;
-            case 1:
-                traversal();
-                break;
-            case 2:
-                createNode();
-                break;
-            case 3:
-                insertion_at_beginning();
-                break;
-            case 4:
-                insertion_at_end();
-                break;
-            case 5:
-                insertion_at_position();
-                break;
+            case 0: printf("Exiting.....\n"); break;
+            case 1: traversal(); break;
+            case 2: insertion_at_beginning(); break;
+            case 3: insertion_at_end(); break;
+            case 4: insertion_at_position(); break;
             default:
                 printf("Invalid choice..\n");
         }
