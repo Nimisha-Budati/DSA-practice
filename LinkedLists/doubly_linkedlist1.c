@@ -1,5 +1,5 @@
-//Added insertion at beginning,end and at a position in a doubly linked list
-//creation aand traversal of a doublyy linked list
+//Added insertion at beginning, end and at a position in a doubly linked list
+//creation and traversal of a doubly linked list
 #include<stdio.h>
 #include<stdlib.h>
 struct node{
@@ -23,15 +23,13 @@ void traversal(){
 }
 void createNode(){
     struct node *newnode;
-    int value;
     newnode=(struct node*)malloc(sizeof(struct node));
     if(newnode==NULL){
         printf("Memory allocation failed\n");
         return;
     }
     printf("Enter data: ");
-    scanf("%d",&value);
-    newnode->data=value;
+    scanf("%d",&newnode->data);
     newnode->prev=NULL;
     newnode->next=NULL;
     if(head==NULL){
@@ -43,15 +41,10 @@ void createNode(){
         temp=newnode;
     }
     count++;
-    printf("Node created successfully\n");
 }
 void insertion_at_beginning(){
     struct node *newnode;
     newnode=(struct node*)malloc(sizeof(struct node));
-    if(newnode==NULL){
-        printf("Memory allocation failed\n");
-        return;
-    }
     printf("Enter value: ");
     scanf("%d",&newnode->data);
     newnode->prev=NULL;
@@ -61,15 +54,11 @@ void insertion_at_beginning(){
     }
     head=newnode;
     count++;
-    printf("Node inserted successfully at beginning\n");
+    printf("Inserted at beginning\n");
 }
 void insertion_at_end(){
-    struct node *newnode,*temp;
+    struct node *newnode,*curr;
     newnode=(struct node*)malloc(sizeof(struct node));
-    if(newnode==NULL){
-        printf("Memory allocation failed\n");
-        return;
-    }
     printf("Enter value: ");
     scanf("%d",&newnode->data);
     newnode->prev=NULL;
@@ -77,17 +66,16 @@ void insertion_at_end(){
     if(head==NULL){
         head=newnode;
         count++;
-        printf("Node inserted successfully at end\n");
         return;
     }
-    temp=head;
-    while(temp->next!=NULL){
-        temp=temp->next;
+    curr=head;
+    while(curr->next!=NULL){
+        curr=curr->next;
     }
-    temp->next=newnode;
-    newnode->prev=temp;
+    curr->next=newnode;
+    newnode->prev=curr;
     count++;
-    printf("Node inserted successfully at end\n");
+    printf("Inserted at end\n");
 }
 void insertion_at_position(){
     struct node *newnode,*temp;
@@ -103,10 +91,6 @@ void insertion_at_position(){
         return;
     }
     newnode=(struct node*)malloc(sizeof(struct node));
-    if(newnode==NULL){
-        printf("Memory allocation failed\n");
-        return;
-    }
     printf("Enter value: ");
     scanf("%d",&newnode->data);
     temp=head;
@@ -120,18 +104,22 @@ void insertion_at_position(){
     }
     temp->next=newnode;
     count++;
-    printf("Node inserted successfully at position\n");
+    printf("Inserted at position %d\n",pos);
 }
 int main(){
-    int choice;
+    int choice,n,i;
+    printf("Enter number of nodes: ");
+    scanf("%d",&n);
+    for(i=0;i<n;i++){
+        createNode();
+    }
     do{
         printf("\n===== MENU =====\n");
         printf("0.Exit\n");
         printf("1.Traversal\n");
-        printf("2.Create New Node\n");
-        printf("3.Insert at Beginning\n");
-        printf("4.Insert at End\n");
-        printf("5.Insert at Position\n");
+        printf("2.Insert at Beginning\n");
+        printf("3.Insert at End\n");
+        printf("4.Insert at Position\n");
         printf("Enter choice: ");
         scanf("%d",&choice);
         switch(choice){
@@ -142,15 +130,12 @@ int main(){
                 traversal();
                 break;
             case 2:
-                createNode();
-                break;
-            case 3:
                 insertion_at_beginning();
                 break;
-            case 4:
+            case 3:
                 insertion_at_end();
                 break;
-            case 5:
+            case 4:
                 insertion_at_position();
                 break;
             default:
