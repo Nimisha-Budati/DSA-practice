@@ -6,8 +6,8 @@ struct node{
     int data;
     struct node *next;
 };
-struct node *head=NULL,*temp=NULL;
-int count;
+struct node *head=NULL,*lastnode=NULL;
+int count=0;
 void traversal(){
     struct node *temp=head;
     if(head==NULL){
@@ -32,12 +32,12 @@ void createNode(){
     scanf("%d",&newnode->data);
     newnode->next=NULL;
     if(head==NULL){
-        head=temp=newnode;
-        temp->next=newnode;
+        head=lastnode=newnode;
+        lastnode->next=newnode;
     }
     else{
-        temp->next=newnode;
-        temp=newnode;
+        lastnode->next=newnode;
+        lastnode=newnode;
         newnode->next=head;
     }
     count++;
@@ -53,7 +53,7 @@ void insertion_at_beginning(){
     printf("Enter data: ");
     scanf("%d",&newnode->data);
     if(head==NULL){
-        head=newnode;
+        head=lastnode=newnode;
         head->next=head;
     }
     else{
@@ -78,7 +78,7 @@ void insertion_at_end(){
     printf("Enter data: ");
     scanf("%d",&newnode->data);
     if(head==NULL){
-        head=newnode;
+        head=lastnode=newnode;
         head->next=head;
     }
     else{
@@ -117,7 +117,6 @@ void insertion_at_position(){
         }
         printf("Enter data: ");
         scanf("%d",&newnode->data);
-        newnode->next=NULL;
         temp=head;
         for(i=1;i<pos-1;i++){
             temp=temp->next;
@@ -159,17 +158,18 @@ int main(){
             case 5:
                 insertion_at_position();
                 break;
-            default:printf("Invalid choice..\n");
+            default:
+                printf("Invalid choice..\n");
         }
     }while(choice!=0);
     if(head!=NULL){
-    struct node *temp=head->next,*next;
-    while(temp!=head){
-        next=temp->next;
-        free(temp);
-        temp=next;
-    }
-    free(head);
+        struct node *temp=head->next,*next;
+        while(temp!=head){
+            next=temp->next;
+            free(temp);
+            temp=next;
+        }
+        free(head);
     }
     return 0;
 }
