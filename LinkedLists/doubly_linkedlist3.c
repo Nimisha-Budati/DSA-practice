@@ -201,12 +201,16 @@ void length(){
     return;
 }
 int main(){
-    int choice;
+    int choice,n,i;
+    printf("Enter number of nodes: ");
+    scanf("%d",&n);
+    for(i=0;i<n;i++){
+        createNode();
+    }
     do{
         printf("\n===== MENU =====\n");
         printf("0.Exit\n");
         printf("1.Traversal\n");
-        printf("2.Create New Node\n");
         printf("3.Insert at Beginning\n");
         printf("4.Insert at End\n");
         printf("5.Insert at Position\n");
@@ -217,38 +221,16 @@ int main(){
         printf("Enter choice: ");
         scanf("%d",&choice);
         switch(choice){
-            case 0:
-                printf("Exiting program...\n");
-                break;
-            case 1:
-                traversal();
-                break;
-            case 2:
-                createNode();
-                break;
-            case 3:
-                insertion_at_beginning();
-                break;
-            case 4:
-                insertion_at_end();
-                break;
-            case 5:
-                insertion_at_position();
-                break;
-            case 6:
-                deletion_from_beginning();
-                break;
-            case 7:
-                deletion_from_end();
-                break;
-            case 8:
-                deletion_from_position();
-                break;
-            case 9:
-                length();
-                break;
-            default:
-                printf("Invalid choice\n");
+            case 0: printf("Exiting program...\n"); break;
+            case 1: traversal(); break;
+            case 3: insertion_at_beginning(); break;
+            case 4: insertion_at_end(); break;
+            case 5: insertion_at_position(); break;
+            case 6: deletion_from_beginning(); break;
+            case 7: deletion_from_end(); break;
+            case 8: deletion_from_position(); break;
+            case 9: length(); break;
+            default: printf("Invalid choice\n");
         }
     }while(choice!=0);
     struct node *ptr=head;
