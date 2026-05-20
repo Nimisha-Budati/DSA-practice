@@ -13,23 +13,21 @@ void push(char x){
     stack[++top]=x;
 }
 char pop(){
-    if(top==-1){
+    if(top==-1)
         return -1;
-    }
     return stack[top--];
 }
 char peek(){
-    if(top==-1){
+    if(top==-1)
         return -1;
-    }
     return stack[top];
 }
 int precedence(char ch){
     if(ch=='^')
         return 3;
-    else if(ch=='*' || ch=='/' || ch=='%')
+    if(ch=='*' || ch=='/' || ch=='%')
         return 2;
-    else if(ch=='+' || ch=='-')
+    if(ch=='+' || ch=='-')
         return 1;
     return 0;
 }
@@ -68,10 +66,11 @@ int main(){
             while(peek()!='('){
                 prefix[j++]=pop();
             }
-            pop(); 
+            pop();
         }
         else{
-            while(top!=-1 && ((precedence(peek()) > precedence(infix[i])) || (precedence(peek()) == precedence(infix[i]) && infix[i] != '^'))){
+            while(top!=-1 && precedence(peek()) > precedence(infix[i]))
+            {
                 prefix[j++]=pop();
             }
             push(infix[i]);
