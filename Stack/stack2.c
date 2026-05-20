@@ -114,8 +114,7 @@ int main(){
                         printf("Stack is empty\n");
                     }else{
                         printf("Stack is not empty\n");
-                    } 
-                    break;
+                    } break;
             case 6: length();break;
             default: printf("Invalid choice\n");
         }
