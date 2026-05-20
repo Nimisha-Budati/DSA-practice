@@ -51,7 +51,7 @@ int main(){
             pop(); 
         }
         else{
-            while(top!=-1 && precedence(peek())>=precedence(infix[i])){
+            while(top!=-1&&precedence(peek())>=precedence(infix[i])){
                 postfix[j++]=pop();
             }
             push(infix[i]);
