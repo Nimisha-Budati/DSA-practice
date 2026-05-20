@@ -31,7 +31,7 @@ void push(){
             newnode->link=top;
             top=newnode;
         }
-        
+
         printf("Pushed the node: %d\n",newnode->data);
     }
 }
@@ -116,7 +116,7 @@ int main(){
                         printf("Stack is not empty\n");
                     } 
                     break;
-            case 6: length(); break;
+            case 6: length();break;
             default: printf("Invalid choice\n");
         }
     }while(choice!=0);
