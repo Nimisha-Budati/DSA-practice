@@ -31,6 +31,7 @@ void push(){
             newnode->link=top;
             top=newnode;
         }
+        
         printf("Pushed the node: %d\n",newnode->data);
     }
 }
