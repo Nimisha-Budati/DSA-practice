@@ -1,6 +1,5 @@
 //Implementation of stack using linked list
 #include<stdio.h>
-#include<conio.h>
 #include<stdlib.h>
 struct node{
     int data;
@@ -93,7 +92,6 @@ void length(){
 int main(){
     int choice;
     do{
-        clrscr();
         printf("====Menu====\n");
         printf("0.Exit\n");
         printf("1.Push\n");
