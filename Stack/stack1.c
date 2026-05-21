@@ -1,6 +1,5 @@
 //Implementation of stack using arrays
 #include<stdio.h>
-#include<conio.h>
 #define N 5
 int stack[N];
 int top=-1;
@@ -66,7 +65,6 @@ int isFull(){
 int main(){
     int choice;
     do{
-        clrscr();
         printf("====Menu====\n");
         printf("0.Exit\n");
         printf("1.Push\n");
