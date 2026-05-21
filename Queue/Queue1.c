@@ -1,6 +1,5 @@
 //Implementation of queue using Arrays
 #include<stdio.h>
-#include<conio.h>
 #define N 5
 int queue[N];
 int front=-1,rear=-1;
@@ -70,7 +69,6 @@ int isFull(){
 int main(){
     int choice,x;
     do{
-        clrscr();
         printf("====Menu====\n");
         printf("0.Exit\n");
         printf("1.Enqueue\n");
