@@ -1,4 +1,4 @@
-//Implementation of circular queue using linked list
+//Implementation of circular queue using Linked list
 #include<stdio.h>
 #include<stdlib.h>
 struct node{
