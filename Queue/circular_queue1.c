@@ -1,4 +1,4 @@
-//Implementation of circular queue using Array
+//Implementation of circular queue using array
 #include<stdio.h>
 #define N 5
 int queue[N];
