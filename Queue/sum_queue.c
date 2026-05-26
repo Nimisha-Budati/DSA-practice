@@ -1,4 +1,4 @@
-//Sum of all elements in a Queue
+//Sum of all elements in a Queue using enqueue and dequeue operations
 #include<stdio.h>
 #define N 5
 int queue[N];
