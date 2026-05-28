@@ -1,5 +1,4 @@
 //Added postorder traversal
-//Added preorder traversal
 //Implementation of binary tree with memory deallocation
 #include<stdio.h>
 #include<stdlib.h>
@@ -28,14 +27,6 @@ struct node* create(){
     newnode->right=create();
     return newnode;
 }
-void preorderTraversal(struct node *root){
-    if(root==NULL){
-        return;
-    }
-    printf("%d ",root->data);
-    preorderTraversal(root->left);
-    preorderTraversal(root->right);
-}
 void postorderTraversal(struct node *root){
     if(root==NULL){
         return;
@@ -59,8 +50,7 @@ int main(){
         printf("\n====== MENU ======\n");
         printf("0. Exit\n");
         printf("1. Create Tree\n");
-        printf("2. Preorder Traversal\n");
-        printf("3. Postorder Traversal\n");
+        printf("2. Postorder Traversal\n");
         printf("Enter choice: ");
         scanf("%d",&choice);
         switch(choice){
@@ -76,16 +66,6 @@ int main(){
                 root=create();
                 break;
             case 2:
-                if(root==NULL){
-                    printf("Tree is empty\n");
-                }
-                else{
-                    printf("Preorder Traversal: ");
-                    preorderTraversal(root);
-                    printf("\n");
-                }
-                break;
-            case 3:
                 if(root==NULL){
                     printf("Tree is empty\n");
                 }
