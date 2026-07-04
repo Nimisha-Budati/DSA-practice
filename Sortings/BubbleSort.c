@@ -1,3 +1,4 @@
+//bubble sort
 #include<stdio.h>
 #define N 10
 void bubbleSort(int arr[], int n){
