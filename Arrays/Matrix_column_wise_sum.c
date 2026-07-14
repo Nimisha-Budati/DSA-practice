@@ -1,4 +1,4 @@
-//column wise sum of a matrix
+/*column wise sum of a matrix*/
 #include<stdio.h>
 #define N 10
 int main(){
