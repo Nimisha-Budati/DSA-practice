@@ -1,0 +1,30 @@
+//check whether the matrix is lower triangular or not
+#include<stdio.h>
+#define N 10
+int main(){
+    int rows,cols,a[N][N],i,j;
+    printf("Enter noof rows: ");
+    scanf("%d",&rows);
+    printf("Enter noof cols: ");
+    scanf("%d",&cols);
+    if(rows != cols){
+        printf("Not an lower triangular matrix\n");
+        return 0;
+    }   
+    printf("Enter (%d x %d) elements of matrix 1:\n",rows,cols);
+    for(i=0;i<rows;i++){
+        for(j=0;j<cols;j++){
+            scanf("%d",&a[i][j]);
+        }
+    }
+    for(i=0;i<rows;i++){
+        for(j=0;j<cols;j++){
+            if(i<j && a[i][j]!=0){
+                printf("Not an lower triangular matrix\n");
+                return 0;
+            }
+        }
+    }
+    printf("A lower triangular matrix\n");
+    return 0;
+}
