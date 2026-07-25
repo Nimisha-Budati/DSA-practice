@@ -19,8 +19,8 @@ int main(){
         }
     }
     printf("Rotated matrix:\n");
-    for(i=0;i<cols;i++){
-        for(j=0;j<rows;j++){
+    for(i=0;i<rows;i++){
+        for(j=0;j<cols;j++){
             printf("%d ",rotate[i][j]);
         }
         printf("\n");
