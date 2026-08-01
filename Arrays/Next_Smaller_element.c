@@ -1,4 +1,4 @@
-//finding next smaller element
+//Finding next smaller element
 #include<stdio.h>
 #define N 10
 int main(){
