@@ -14,3 +14,15 @@ n << 1 = n × 2
 n << 2 = n × 4
 n << 3 = n × 8
 */
+/*
+1 << i
+It creates a number where only the i-th bit is 1.
+For example:
+1 << 0
+0001
+1 << 1
+0010
+1 << 2
+0100
+is used whenever we want to work with the i-th bit.
+*/
