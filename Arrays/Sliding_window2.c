@@ -1,4 +1,4 @@
-//Smallest Subarray With Sum ≥ Target
+//Smallest Subarray With Sum≥Target
 #include<stdio.h>
 int main(){
     int arr[]={1,3,5,7,8};
